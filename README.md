@@ -1,5 +1,5 @@
 # pushgateway-cleaner
-A tool for prometheus-pushgateway to clean the metrics. Pushgateway will not clean the metrics by default, and also not provide such function, we had to manage the metrics in Pushgateway by ourself, this is a such tool to help us.
+A tool for prometheus-pushgateway to clean the metrics. Pushgateway will not clean the metrics by default, and also not provide such function, we had to manage the metrics(job) in Pushgateway by ourself, this is a such tool to help us.
 
 ## Usage
 
@@ -18,9 +18,9 @@ TARGET_JOBS json items:
 
 | Attribute  | Type | Comment |
 | ------------- | ------------- | ------------- |
-| name  | String  | Metrics name |
-| duration  | Integer  | Seconds, expired time for Metrics, the metrics age more than this value will be deleted |
-| group_labels  | String  | Metrics group labels |
+| name  | String  | Job name |
+| duration  | Integer  | Seconds, expired time for job, the job age more than this value will be deleted |
+| group_labels  | String  | Job group labels |
 
 - How to get the group_labels:
 1. Get the response: http://${PUSHGATEWAY_HOST}/metrics;
