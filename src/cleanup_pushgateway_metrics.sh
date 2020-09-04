@@ -2,7 +2,7 @@
 # Cronjob task to cleanup pushgateway metrics
 #
 # Set env:
-#  export PUSHGATEWAY_HOST="pushgateway-stg.cci.nokia.net"
+#  export PUSHGATEWAY_HOST="pushgateway.onecmd.com"
 #  export TARGET_JOBS="[{'name':'kubernetes-resource-check','duration':1200,'group_labels':'container,pod'}
 #                      ,{'name':'gitlab_statistics','duration':600,'group_labels':''}]"
 #
