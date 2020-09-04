@@ -1,7 +1,10 @@
 # pushgateway-cleaner
-A tool for prometheus-pushgateway to clean the metrics. Pushgateway will not clean the metrics, we had to manage the metrics in Pushgateway, this is a such tool.
+A tool for prometheus-pushgateway to clean the metrics. Pushgateway will not clean the metrics by default, and also not provide such function, we had to manage the metrics in Pushgateway by ourself, this is a such tool to help us.
 
 ## Usage
+
+### Precondition
+[jq](https://stedolan.github.io/jq/download/) should be installed.
 
 ### Set env
 ```
@@ -16,9 +19,18 @@ TARGET_JOBS json items:
 | Attribute  | Type | Comment |
 | ------------- | ------------- | ------------- |
 | name  | String  | Metrics name |
-| duration  | Integer  | Expired time for Metrics, the metrics age more than this value will be deleted |
+| duration  | Integer  | Seconds, expired time for Metrics, the metrics age more than this value will be deleted |
 | group_labels  | String  | Metrics group labels |
 
+- How to get the group_labels:
+1. Get the response: http://${PUSHGATEWAY_HOST}/metrics;
+2. Find the line include the job name which need to cleanup;
+
+   eg. 'job="kubernetes-resource-check"':
+   ```
+   metrics_name{job="kubernetes-resource-check", container="test_container", pod="test_pod"} 1.5992256155004728e+09
+   ```
+3. Then 'container' and 'pod' are the labels, then the group_labels value should be: 'container,pod';
 
 ### Add to crontab
 ```
