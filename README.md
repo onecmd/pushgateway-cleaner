@@ -9,6 +9,7 @@ export PUSHGATEWAY_HOST="pushgateway.onecmd.com"
 export TARGET_JOBS="[{'name':'kubernetes-resource-check','duration':1200,'group_labels':'container,pod'}
                     ,{'name':'gitlab_statistics','duration':600,'group_labels':''}]"
 ```
+- NOTE: Add it to the script directly if not want to export in system ENV.
 
 TARGET_JOBS json items:
 
